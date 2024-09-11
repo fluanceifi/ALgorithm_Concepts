@@ -1,0 +1,32 @@
+//
+//  main.c
+//  myProject
+//
+//  Created by Seung jun Yoo on 9/10/24.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int fibonacci(int n){
+    if(n == 0){
+        return 0;
+    }
+    else if (n == 1){
+        return 1;
+    }
+    return fibonacci(n-1) + fibonacci(n-2);
+}
+
+
+int main(int argc, const char * argv[]) {
+    int num, result;
+    printf("what number do you need to find the sequence? : ");
+    scanf("%d", &num);
+    
+    result = fibonacci(num);
+    printf("%d is ... %d\n",num ,result);
+    
+    return 0;
+}
