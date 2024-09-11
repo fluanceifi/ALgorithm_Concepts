@@ -1,0 +1,58 @@
+//
+//  main.c
+//  myProject
+//
+//  Created by Seung jun Yoo on 9/10/24.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void exchangeSort(int arr[], int n){
+    int temp;
+    for(int i = 0 ; i < n-1 ; i++){
+        for(int j = i + 1 ; j < n ; j++){
+            if(arr[i] > arr[j]){
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
+
+int main(int argc, const char * argv[]) {
+    int n = 0;
+    printf("Enter array length : ");
+    scanf("%d", &n);
+    if(n > 0){
+        int *S = malloc(n * sizeof(int));
+        
+        if(S == NULL)
+            return 1;
+        
+        printf("Input each index's number!\n");
+        for(int i = 0 ; i < n ; i++){
+            int a = 0;
+            scanf("%d", &a);
+            S[i] = a;
+        }
+        printf("before sorting array => ");
+        for(int j = 0 ; j < n ; j++){
+            printf("|%d", S[j]);
+        }
+        printf("|\n");
+        
+        exchangeSort(S, n);
+        
+        printf("after sorting array => ");
+        for(int k = 0 ; k < n ; k++){
+            printf("|%d", S[k]);
+        }
+        printf("|\n");
+        
+        free(S);
+    }
+    return 0;
+}
