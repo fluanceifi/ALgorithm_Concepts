@@ -1,0 +1,28 @@
+//
+//  main.c
+//  myProject
+//
+//  Created by Seung jun Yoo on 9/10/24.
+//
+
+#include <stdio.h>
+
+int seqsearch(int n, int s[]){
+    for(int i = 0 ; i < 10 ; i++){
+        if(s[i] == n)
+            return i;
+    }
+    return -1;
+}
+
+int main(int argc, const char * argv[]) {
+    int searchNum;
+    int result;
+    scanf("%d", &searchNum);
+    
+    int arr[10] = {12, 7, 10, 5, 16, 8, 4, 9, 6, 2};
+    
+    result = seqsearch(searchNum, arr);
+    printf("Search number's index is ... [%d]\nif index is -1, then not found\n", result);
+    return 0;
+}
