@@ -31,7 +31,9 @@ int binsearch(int low, int high){
     if (x == S[mid]){
         return mid;
     }else if(x < S[mid]){
-        return binsearch(low, mid-1);
+        return binsearch(low, mid-1); 
+        //만약 못찾았을 경우는 배열의 크기가 1이되는데 
+        //여기서 high에 해당하는 mid-1이 low>high의 조건을 만족하게 되면서 28행의 조건을 만족하게 되어 실행이 종료된다.
     }else{
         return binsearch(mid+1, high);
     }
