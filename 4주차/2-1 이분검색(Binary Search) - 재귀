@@ -1,0 +1,62 @@
+/* 
+알고리즘:
+int binsearch (int low, int high)
+int mid
+if low > high, return -1 --> 재귀는 항상 반복을 종료하는 조건문을 필수로 가진다.
+mid ← ⌊ (low + high) / 2 ⌋ if x == S[mid], return mid else if x < S[mid],
+return binsearch(low, mid-1) else
+return binsearch(mid+1, high)
+*/
+
+//
+//  main.c
+//  myProject
+//
+//  Created by Seung jun Yoo on 9/10/24.
+//
+
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX_SIZE 100
+
+int x;
+int S[MAX_SIZE];
+
+int binsearch(int low, int high){
+    int mid = (low + high) / 2;
+    
+    if (low > high)
+        return -1;
+    
+    if (x == S[mid]){
+        return mid;
+    }else if(x < S[mid]){
+        return binsearch(low, mid-1);
+    }else{
+        return binsearch(mid+1, high);
+    }
+}
+
+int main(int argc, const char * argv[]) {
+    int count = 0;
+    printf("input Array Number.\nIf you want to stop input -1.\n");
+    while(1){
+        int i;
+        scanf("%d", &i);
+        
+        if(i == -1)
+            break;
+        
+        S[count] = i;
+        count++;
+    }
+    printf("Enter the Key of Number.\n");
+    scanf("%d", &x);
+    
+    int result = binsearch(0, count);
+    
+    printf("Your number is [%d]\n", result);
+    
+    return 0;
+    
+}
