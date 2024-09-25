@@ -1,0 +1,62 @@
+//
+//  HW1_202215064_code.c
+//  myProject
+//
+//  Created by Seung jun Yoo on 9/10/24.
+//
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#define INF 9999
+
+void Find3SmallestNumber(int arr[], int n, int *min1, int *min2, int *min3){
+    *min1 = INF;
+    *min2 = INF;
+    *min3 = INF;
+
+    for(int i = 0 ; i < n ; i++){
+        if(arr[i] < *min1){
+            *min3 = *min2;
+            *min2 = *min1;
+            *min1 = arr[i];
+        }
+        else if(arr[i]< *min2 && arr[i] != *min1){
+            *min3 = *min2;
+            *min2 = arr[i];
+        }
+        else if(arr[i] < *min3 && arr[i] != *min1 && arr[i] != *min2){
+            *min3 = arr[i];
+        }
+    }
+}
+
+int main(int argc, const char * argv[]){
+    int n;
+    int a, b, c;
+    printf("Enter the arr size: ");
+    scanf("%d", &n);
+
+    int *S = malloc(n * sizeof(int));
+    if(S == NULL)
+        return -1;
+
+    for(int i = 0 ; i < n ; i ++) {
+        //당연히 #define n 7로 하드코딩 할 수도 있지만 문제에선 S[n] = {3, 10, 7, 23, 6, 5, 12}를 요구하여 입력받는 형식으로 작성함.
+        int temp;
+        printf("[%d] = ", i);
+        scanf("%d", &temp);
+        S[i] = temp; // S[n] = {3, 10, 7, 23, 6, 5 ,12}
+    }
+    printf("S[%d] = {", n);
+    for(int i = 0 ; i < n ; i ++) {
+        printf("% d ", S[i]);
+    }
+    printf("}\n");
+
+    Find3SmallestNumber(S, n, &a, &b, &c);
+    //지역변수의 주소를 함수로 넘겨주고 그걸 포인터로 받으면 변수의 주소를 저장하고, 변수에 접근하여 값을 수정할 수 있다.
+    printf("Array S[]'s 3 smallest number is ... (%d, %d, %d)", a, b, c);
+
+    free(S);
+    return 0;
+}
